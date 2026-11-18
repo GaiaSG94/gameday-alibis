@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alibis · V1 · 02 Plan</title>
+<style>
+/* ============ SHEET (planche) ============ */
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#cfccc5}
+body{font-family:"Helvetica Neue",Arial,"Liberation Sans",sans-serif;color:#1c1a17;overflow-x:hidden}
+.sheet{width:1980px;padding:40px 48px 56px;transform-origin:0 0}
+.sh-head{display:grid;grid-template-columns:420px 1fr 420px;gap:40px;align-items:start;margin-bottom:32px}
+.sh-id .k{font:600 11px/1 "DejaVu Sans Mono",Menlo,monospace;letter-spacing:.14em;text-transform:uppercase;color:#6d675c}
+.sh-id h1{font:400 44px/1.05 "Iowan Old Style",Charter,Georgia,"Noto Serif","DejaVu Serif",serif;margin-top:10px}
+.sh-why{font-size:15px;line-height:1.5;max-width:720px;color:#2e2a24}
+.sh-why b{font-weight:600}
+.sh-spec{display:flex;flex-direction:column;gap:10px}
+.sw{display:flex;gap:8px}
+.sw span{flex:1;height:44px;border-radius:4px;padding:6px;font:10px/1 "DejaVu Sans Mono",monospace;display:flex;align-items:flex-end;border:1px solid rgba(0,0,0,.08)}
+.ty{font-size:12px;color:#4a453d;line-height:1.5}
+.frames{display:flex;gap:48px;align-items:flex-start}
+.fr-l{font:600 11px/1 "DejaVu Sans Mono",monospace;letter-spacing:.12em;text-transform:uppercase;color:#6d675c;margin-bottom:10px}
+.states{margin-top:40px}
+.st-row{display:flex;gap:28px;align-items:flex-start;flex-wrap:wrap}
+.st{display:flex;flex-direction:column;gap:8px}
+.st i{font:normal 11px/1.3 "DejaVu Sans Mono",monospace;color:#6d675c}
+
+/* ============ NEUTRAL HOST CHROME (generic feed, not branded) ============ */
+.desk{width:1440px;height:900px;background:#f6f7f8;border-radius:10px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(0,0,0,.35);font-family:"Helvetica Neue",Arial,"Liberation Sans",sans-serif}
+.d-top{height:56px;background:#fff;border-bottom:1px solid #e4e6e8;display:flex;align-items:center;gap:24px;padding:0 24px}
+.d-logo{width:96px;height:22px;border-radius:6px;background:#dfe2e5}
+.d-search{flex:0 0 560px;margin:0 auto;height:38px;border-radius:19px;background:#eef0f2;color:#8a9096;font-size:14px;display:flex;align-items:center;padding:0 18px}
+.d-user{width:34px;height:34px;border-radius:50%;background:#dfe2e5}
+.d-body{display:grid;grid-template-columns:260px 768px 330px;gap:28px;padding:20px 24px 0;justify-content:center}
+.d-nav{display:flex;flex-direction:column;gap:14px;padding-top:8px}
+.d-nav span{height:12px;border-radius:6px;background:#e3e6e9}
+.d-nav span:nth-child(3n){width:70%}.d-nav span:nth-child(4n){width:55%}
+.post{background:#fff;border:1px solid #e4e6e8;border-radius:12px;padding:12px 16px 6px}
+.post-h{display:flex;align-items:center;gap:8px;font-size:12px;color:#6b7176;height:28px}
+.post-h .av{width:24px;height:24px;border-radius:50%;background:#1c1a17;color:#f2ead8;font:700 11px/24px Georgia,serif;text-align:center}
+.post-h b{color:#1f2326;font-weight:600}
+.post-t{font-size:19px;font-weight:600;color:#1f2326;margin:4px 0 10px;letter-spacing:-.01em}
+.post-f{display:flex;gap:10px;height:42px;align-items:center;font-size:12px;font-weight:600;color:#53595e}
+.post-f span{background:#eef0f2;border-radius:16px;padding:7px 12px}
+.d-side .card{background:#fff;border:1px solid #e4e6e8;border-radius:12px;padding:16px;font-size:13px;color:#3b4146;line-height:1.5}
+.d-side .card h4{font-size:14px;color:#1f2326;margin-bottom:6px}
+.d-side .card+.card{margin-top:16px}
+.d-side .cm{border-top:1px solid #eef0f2;padding:10px 0;font-size:13px}
+.d-side .cm b{font-size:12px;color:#6b7176;font-weight:600;display:block;margin-bottom:2px}
+.mob{width:390px;height:844px;background:#fff;border-radius:44px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(0,0,0,.4);outline:10px solid #111;outline-offset:0;font-family:"Helvetica Neue",Arial,"Liberation Sans",sans-serif;display:flex;flex-direction:column}
+.m-status{height:44px;display:flex;justify-content:space-between;align-items:center;padding:0 28px;font-size:14px;font-weight:600;color:#111}
+.m-bar{height:44px;display:flex;align-items:center;gap:12px;padding:0 14px;border-bottom:1px solid #eceef0;font-size:14px;font-weight:600;color:#1f2326}
+.m-bar .bk{font-size:20px;color:#6b7176}
+.m-post{padding:8px 14px 8px}
+.m-post .post-t{font-size:16px;margin:2px 0 0}
+.m-foot{height:48px;display:flex;gap:8px;align-items:center;padding:0 14px;border-top:1px solid #eceef0;font-size:12px;font-weight:600;color:#53595e;margin-top:auto}
+.m-foot span{background:#eef0f2;border-radius:16px;padding:7px 11px}
+
+
+.post-h .av{background:#e4432f;color:#fff;font-family:Arial,sans-serif}
+
+.g{--bg:#fbfaf7;--ink:#141414;--red:#e4432f;--mut:#8d8781;--faint:#f5d5cf;
+  --sans:"Helvetica Neue",Arial,"Liberation Sans",sans-serif;--mono:"IBM Plex Mono","SF Mono",Menlo,"DejaVu Sans Mono",monospace;
+  position:relative;background:var(--bg);color:var(--ink);font-family:var(--sans);overflow:hidden}
+.g .lb{font:400 10px/1 var(--mono);color:var(--red);letter-spacing:.02em}
+.g h2{font-weight:300;letter-spacing:-.025em;line-height:1}
+.g .hd{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:1px solid var(--red)}
+.g .meta{font:400 11px/1.5 var(--mono);text-align:right}
+.g .meta b{font-weight:700;color:var(--red)}
+.g .rule{color:#3d3a36}
+.g .rule em{font-style:normal;color:var(--red)}
+.g .plan,.g .time{display:block;width:100%}
+.g .fi{display:grid;grid-template-columns:20px 1fr auto;gap:10px;align-items:start;border-top:1px solid var(--red)}
+.g .fi .no{font:700 11px/1 var(--mono);color:var(--red);padding-top:2px}
+.g .fi .src{font:400 10px/1 var(--mono);color:var(--mut);margin-bottom:5px}
+.g .fi p{line-height:1.3}
+.g .fi.false p{color:var(--mut);text-decoration:line-through;text-decoration-color:var(--red);text-decoration-thickness:1.5px}
+.g .fi .tag{font:700 10px/1 var(--mono);color:var(--red);border:1px solid var(--red);padding:3px 5px;margin-top:1px}
+.g .who{display:flex;gap:16px;align-items:baseline;border-top:1px solid var(--red)}
+.g .nm{border-bottom:1px solid #d6d2cc;padding-bottom:2px}
+.g .nm.sel{color:var(--red);border-bottom:2px solid var(--red);font-weight:700}
+.g .acc{display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--ink)}
+.g .acc dl{display:flex;gap:26px}
+.g .acc dt{font:400 10px/1 var(--mono);color:var(--mut);margin-bottom:4px}
+.g .acc dd{font-weight:700}
+.g .btn{font:700 13px/1 var(--sans);background:var(--red);color:#fff;border:0;padding:14px 20px;letter-spacing:.01em}
+.g .btn.off{background:transparent;color:var(--mut);border:1px solid #d6d2cc}
+.g .crowd{font:400 10px/1.4 var(--mono);color:var(--mut)}
+.g .vm{position:absolute;top:0;bottom:0;writing-mode:vertical-rl;display:flex;justify-content:space-between;font:400 10px/1 var(--mono);color:var(--red);padding:22px 0}
+/* desktop */
+.gd{width:734px;height:648px;border:1px solid #ebe7e0;border-radius:6px;padding:20px 42px 0}
+.gd .vm.l{left:14px;transform:rotate(180deg)}.gd .vm.r{right:14px}
+.gd h2{font-size:34px;padding-bottom:12px}
+.gd .rule{font-size:15px;margin:13px 0 18px}
+.gd .grid{display:grid;grid-template-columns:318px 1fr;gap:28px}
+.gd .fi{padding:11px 0 12px}
+.gd .fi p{font-size:15px}
+.gd .who{margin-top:4px;padding-top:14px;font-size:16px}
+.gd .acc{margin-top:22px;padding-top:16px}
+.gd .acc dd{font-size:16px}
+/* mobile */
+.gm{width:390px;height:640px;flex:none;padding:12px 16px 0;border-top:1px solid #ebe7e0}
+.gm h2{font-size:24px;padding-bottom:9px}
+.gm .meta{font-size:10px}
+.gm .rule{font-size:12.5px;margin:8px 0 4px}
+.gm .fi{padding:6px 0 7px;grid-template-columns:16px 1fr auto;gap:8px}
+.gm .fi .src{font-size:9px;margin-bottom:3px}
+.gm .fi p{font-size:12.5px}
+.gm .fi .tag{font-size:9px}
+.gm .who{padding-top:9px;font-size:14px;gap:14px}
+.gm .acc{margin-top:10px;padding-top:10px}
+.gm .acc dl{gap:14px}
+.gm .acc dd{font-size:14px}
+.gm .btn{font-size:12px;padding:12px 13px}
+.gm .crowd{text-align:center;margin-top:7px;font-size:9px}
+.st-row.g{background:transparent;overflow:visible}
+
+</style>
+</head>
+<body>
+<div class="sheet" id="sheet">
+
+  <div class="sh-head">
+    <div class="sh-id">
+      <div class="k">Alibis · Planches V1 · Page « Jeu » · 2026-11-18</div>
+      <h1>02 — Plan</h1>
+    </div>
+    <p class="sh-why"><b>Pourquoi.</b> On quitte le papier pour le dessin : un plan d'étage au trait rouge et une frise horaire, comme une fiche d'architecte. Le mensonge ne se cherche plus dans le texte mais dans le dessin : sur la frise, Iris est vue dans l'archive à 21:34 alors que son badge la dit sortie à 21:30, et l'œil voit le conflit. C'est la direction la plus singulière sur Reddit (aucun jeu du jour ne ressemble à ça), avec une seule couleur et zéro texture, donc rapide et nette sur mobile.</p>
+    <div class="sh-spec">
+      <div class="sw"><span style="background:#fbfaf7;color:#141414">#fbfaf7</span><span style="background:#f5d5cf;color:#141414">#f5d5cf</span><span style="background:#8d8781;color:#fff">#8d8781</span><span style="background:#141414;color:#fbfaf7">#141414</span><span style="background:#e4432f;color:#fff">#e4432f</span></div>
+      <div class="ty"><span style="font-size:15px;font-weight:300">grotesque légère, minuscules</span> — titres, rapports · <span style="font-family:'DejaVu Sans Mono',monospace">mono</span> — heures, n° de rapport, cotes</div>
+    </div>
+  </div>
+
+  <div class="frames">
+    <div>
+      <div class="fr-l">Desktop · 1440 × 900 · post déplié dans le feed</div>
+      <div class="desk">
+        <div class="d-top"><div class="d-logo"></div><div class="d-search">Search</div><div class="d-user"></div></div>
+        <div class="d-body">
+          <aside class="d-nav"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></aside>
+          <main>
+            <article class="post">
+              <div class="post-h"><div class="av">A</div><b>r/AlibisDaily</b> · 3 h · u/case-desk</div>
+              <div class="post-t">Case Nº 042 — Who locked the archive?</div>
+
+<div class="g gd">
+  <div class="vm l"><span>case 042</span><span>tue 18 nov</span></div>
+  <div class="vm r"><span>ground floor</span><span>scale 1:200</span></div>
+  <div class="hd"><h2>who locked the archive?</h2><div class="meta">⏱ <b>01:47</b><br>streak 6</div></div>
+  <p class="rule">Five reports. <em>One is false.</em> Strike it, then point at the culprit and the room.</p>
+  <div class="grid">
+    <div>
+      <div class="lb">plan — tap a room</div>
+      <svg class="plan" viewBox="0 0 360 228" style="height:212px" preserveAspectRatio="xMidYMid meet" aria-label="Ground floor plan">
+  <defs><pattern id="hatch-d" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="7" stroke="#e4432f" stroke-width="1" opacity=".35"/></pattern></defs>
+  <rect x="40" y="8" width="150" height="100" fill="url(#hatch-d)" stroke="#e4432f" stroke-width="2.6"/>
+  <rect x="190" y="8" width="150" height="100" fill="none" stroke="#e4432f" stroke-width="1.1"/>
+  <rect x="40" y="108" width="150" height="100" fill="none" stroke="#e4432f" stroke-width="1.1"/>
+  <rect x="190" y="108" width="150" height="100" fill="none" stroke="#e4432f" stroke-width="1.1" stroke-dasharray="4 3"/>
+  <rect x="38" y="160" width="5" height="22" fill="#fbfaf7"/><path d="M40 160 A22 22 0 0 1 62 182" fill="none" stroke="#e4432f" stroke-width=".8"/>
+  <rect x="140" y="106" width="22" height="5" fill="#fbfaf7"/><path d="M140 108 A22 22 0 0 0 162 130" fill="none" stroke="#e4432f" stroke-width=".8"/>
+  <g font-family="Helvetica Neue,Arial,Liberation Sans,sans-serif" font-size="13" fill="#141414">
+    <text x="48" y="25" font-weight="700">archive</text><text x="48" y="40" fill="#e4432f" font-size="10.5">locked inside · 21:40</text>
+    <text x="198" y="25">kitchen</text>
+    <text x="48" y="125">loading bay</text>
+    <text x="198" y="125">rooftop</text><text x="198" y="140" fill="#8d8781" font-size="10.5">level +1</text>
+  </g>
+  <g font-family="Helvetica Neue,Arial,sans-serif" font-size="10.5" text-anchor="middle" font-weight="700">
+    <circle cx="118" cy="70" r="14" fill="#e4432f"/><text x="118" y="73" fill="#fff">IV</text>
+    <circle cx="100" cy="168" r="14" fill="#fbfaf7" stroke="#141414"/><text x="100" y="171" fill="#141414">OB</text>
+    <circle cx="268" cy="66" r="14" fill="#fbfaf7" stroke="#141414"/><text x="268" y="69" fill="#141414">NK</text>
+    <circle cx="268" cy="168" r="14" fill="#fbfaf7" stroke="#141414"/><text x="268" y="171" fill="#141414">PS</text>
+    <circle cx="16" cy="171" r="14" fill="none" stroke="#8d8781" stroke-dasharray="2.5 2"/><text x="16" y="174" fill="#8d8781">IV</text>
+    <line x1="2" y1="186" x2="30" y2="156" stroke="#e4432f" stroke-width="1.6"/>
+  </g>
+  <g font-family="DejaVu Sans Mono,Menlo,monospace" font-size="10.5" fill="#e4432f">
+    <text x="136" y="60">4</text><text x="118" y="158">1</text><text x="286" y="56">2</text><text x="286" y="158">3</text><text x="34" y="158">5</text>
+    <text x="18" y="204" text-anchor="middle" fill="#8d8781">21:30?</text>
+  </g>
+</svg>
+      <div class="lb" style="margin:18px 0 6px">timeline — 21:00 → 21:45</div>
+      <svg class="time" viewBox="14 0 346 48" aria-label="Timeline 21:00 to 21:45">
+  <g font-family="DejaVu Sans Mono,Menlo,monospace" font-size="10" fill="#141414">
+  <line x1="40" y1="24" x2="340" y2="24" stroke="#141414" stroke-width=".8"/><line x1="40.0" y1="20" x2="40.0" y2="28" stroke="#141414" stroke-width=".7"/><line x1="73.33333333333334" y1="24" x2="73.33333333333334" y2="28" stroke="#141414" stroke-width=".7"/><line x1="106.66666666666667" y1="24" x2="106.66666666666667" y2="28" stroke="#141414" stroke-width=".7"/><line x1="140.0" y1="20" x2="140.0" y2="28" stroke="#141414" stroke-width=".7"/><line x1="173.33333333333334" y1="24" x2="173.33333333333334" y2="28" stroke="#141414" stroke-width=".7"/><line x1="206.66666666666666" y1="24" x2="206.66666666666666" y2="28" stroke="#141414" stroke-width=".7"/><line x1="240.0" y1="20" x2="240.0" y2="28" stroke="#141414" stroke-width=".7"/><line x1="273.33333333333337" y1="24" x2="273.33333333333337" y2="28" stroke="#141414" stroke-width=".7"/><line x1="306.6666666666667" y1="24" x2="306.6666666666667" y2="28" stroke="#141414" stroke-width=".7"/><line x1="340.0" y1="20" x2="340.0" y2="28" stroke="#141414" stroke-width=".7"/><text x="40.0" y="42" text-anchor="middle">21:00</text><text x="140.0" y="42" text-anchor="middle">21:15</text><text x="240.0" y="42" text-anchor="middle">21:30</text><text x="340.0" y="42" text-anchor="middle">21:45</text><circle cx="120.0" cy="12" r="8.5" fill="#fbfaf7" stroke="#141414"/><text x="120.0" y="15.5" text-anchor="middle" fill="#141414">1</text><circle cx="206.66666666666666" cy="12" r="8.5" fill="#fbfaf7" stroke="#141414"/><text x="206.66666666666666" y="15.5" text-anchor="middle" fill="#141414">2</text><circle cx="246.66666666666666" cy="12" r="8.5" fill="#fbfaf7" stroke="#141414"/><text x="246.66666666666666" y="15.5" text-anchor="middle" fill="#141414">3</text><circle cx="266.66666666666663" cy="12" r="8.5" fill="#fbfaf7" stroke="#141414"/><text x="266.66666666666663" y="15.5" text-anchor="middle" fill="#141414">4</text><circle cx="293.33333333333337" cy="12" r="8.5" fill="#fbfaf7" stroke="#8d8781" stroke-dasharray="2 1.5"/><text x="293.33333333333337" y="15.5" text-anchor="middle" fill="#8d8781">5</text><line x1="285.33333333333337" y1="20" x2="301.33333333333337" y2="4" stroke="#e4432f" stroke-width="1.4"/><line x1="240.0" y1="20" x2="240.0" y2="30" stroke="#e4432f" stroke-dasharray="2 2"/><line x1="240.0" y1="24" x2="266.66666666666663" y2="24" stroke="#e4432f" stroke-width="2.2"/><rect x="302.6666666666667" y="20" width="8" height="8" fill="#e4432f"/><text x="314.6666666666667" y="15" fill="#e4432f">sealed</text>
+  </g></svg>
+    </div>
+    <div>
+      <div class="lb" style="margin-bottom:8px">reports — tap the false one</div>
+      <div class="fi"><span class="no">1</span><div><div class="src">21:12 · guard log</div><p>Otto signed in at the loading bay.</p></div></div><div class="fi"><span class="no">2</span><div><div class="src">21:25 · kitchen ticket</div><p>Nadia sent the last order from the kitchen.</p></div></div><div class="fi"><span class="no">3</span><div><div class="src">21:31 · camera 3</div><p>Pavel crossed the rooftop with a parcel.</p></div></div><div class="fi"><span class="no">4</span><div><div class="src">21:34 · witness</div><p>Iris was shelving books in the archive.</p></div></div><div class="fi false"><span class="no">5</span><div><div class="src">21:38 · badge reader</div><p>Iris badged out of the building at 21:30.</p></div><span class=tag>false</span></div>
+      <div class="who"><span class="lb">culprit</span><span class="nm sel">iris</span><span class="nm">otto</span><span class="nm">nadia</span><span class="nm">pavel</span></div>
+    </div>
+  </div>
+  <div class="acc">
+    <dl><div><dt>culprit</dt><dd>Iris Vane, librarian</dd></div><div><dt>room</dt><dd>archive</dd></div></dl>
+    <span class="crowd">2,481 detectives<br>on this case today</span>
+    <button class="btn">close the case →</button>
+  </div>
+</div>
+              <div class="post-f"><span>▲ 1.2k ▼</span><span>318 comments</span><span>Share</span></div>
+            </article>
+          </main>
+          <aside class="d-side">
+            <div class="card"><h4>AlibisDaily</h4>One small case every day. Same file for everyone, new file at midnight UTC.</div>
+            <div class="card"><h4>From the comments</h4>
+              <div class="cm"><b>u/marlowe_kid · solved 01:12</b>The badge time gave it away. Nobody badges out before they're seen inside.</div>
+              <div class="cm"><b>u/teapot_tactics · 9-day streak</b>Fell for the camera again. Tomorrow.</div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="fr-l">Mobile · 390 × 844 · contexte réel du post</div>
+      <div class="mob">
+        <div class="m-status"><span>9:41</span><span>●●● 5G ▮</span></div>
+        <div class="m-bar"><span class="bk">‹</span>r/AlibisDaily</div>
+        <div class="m-post">
+          <div class="post-h"><div class="av">A</div><b>r/AlibisDaily</b> · 3 h</div>
+          <div class="post-t">Case Nº 042 — Who locked the archive?</div>
+        </div>
+
+<div class="g gm">
+  <div class="hd"><h2>who locked<br>the archive?</h2><div class="meta">case 042 · ⏱ <b>01:47</b><br>streak 6</div></div>
+  <p class="rule">Five reports. <em>One is false.</em> Strike it, then accuse.</p>
+  <svg class="plan" viewBox="0 0 360 228" style="height:168px" preserveAspectRatio="xMidYMid meet" aria-label="Ground floor plan">
+  <defs><pattern id="hatch-m" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="7" stroke="#e4432f" stroke-width="1" opacity=".35"/></pattern></defs>
+  <rect x="40" y="8" width="150" height="100" fill="url(#hatch-m)" stroke="#e4432f" stroke-width="2.6"/>
+  <rect x="190" y="8" width="150" height="100" fill="none" stroke="#e4432f" stroke-width="1.1"/>
+  <rect x="40" y="108" width="150" height="100" fill="none" stroke="#e4432f" stroke-width="1.1"/>
+  <rect x="190" y="108" width="150" height="100" fill="none" stroke="#e4432f" stroke-width="1.1" stroke-dasharray="4 3"/>
+  <rect x="38" y="160" width="5" height="22" fill="#fbfaf7"/><path d="M40 160 A22 22 0 0 1 62 182" fill="none" stroke="#e4432f" stroke-width=".8"/>
+  <rect x="140" y="106" width="22" height="5" fill="#fbfaf7"/><path d="M140 108 A22 22 0 0 0 162 130" fill="none" stroke="#e4432f" stroke-width=".8"/>
+  <g font-family="Helvetica Neue,Arial,Liberation Sans,sans-serif" font-size="13" fill="#141414">
+    <text x="48" y="25" font-weight="700">archive</text><text x="48" y="40" fill="#e4432f" font-size="10.5">locked inside · 21:40</text>
+    <text x="198" y="25">kitchen</text>
+    <text x="48" y="125">loading bay</text>
+    <text x="198" y="125">rooftop</text><text x="198" y="140" fill="#8d8781" font-size="10.5">level +1</text>
+  </g>
+  <g font-family="Helvetica Neue,Arial,sans-serif" font-size="10.5" text-anchor="middle" font-weight="700">
+    <circle cx="118" cy="70" r="14" fill="#e4432f"/><text x="118" y="73" fill="#fff">IV</text>
+    <circle cx="100" cy="168" r="14" fill="#fbfaf7" stroke="#141414"/><text x="100" y="171" fill="#141414">OB</text>
+    <circle cx="268" cy="66" r="14" fill="#fbfaf7" stroke="#141414"/><text x="268" y="69" fill="#141414">NK</text>
+    <circle cx="268" cy="168" r="14" fill="#fbfaf7" stroke="#141414"/><text x="268" y="171" fill="#141414">PS</text>
+    <circle cx="16" cy="171" r="14" fill="none" stroke="#8d8781" stroke-dasharray="2.5 2"/><text x="16" y="174" fill="#8d8781">IV</text>
+    <line x1="2" y1="186" x2="30" y2="156" stroke="#e4432f" stroke-width="1.6"/>
+  </g>
+  <g font-family="DejaVu Sans Mono,Menlo,monospace" font-size="10.5" fill="#e4432f">
+    <text x="136" y="60">4</text><text x="118" y="158">1</text><text x="286" y="56">2</text><text x="286" y="158">3</text><text x="34" y="158">5</text>
+    <text x="18" y="204" text-anchor="middle" fill="#8d8781">21:30?</text>
+  </g>
+</svg>
+  <svg class="time" viewBox="14 0 346 48" aria-label="Timeline 21:00 to 21:45">
+  <g font-family="DejaVu Sans Mono,Menlo,monospace" font-size="10" fill="#141414">
+  <line x1="40" y1="24" x2="340" y2="24" stroke="#141414" stroke-width=".8"/><line x1="40.0" y1="20" x2="40.0" y2="28" stroke="#141414" stroke-width=".7"/><line x1="73.33333333333334" y1="24" x2="73.33333333333334" y2="28" stroke="#141414" stroke-width=".7"/><line x1="106.66666666666667" y1="24" x2="106.66666666666667" y2="28" stroke="#141414" stroke-width=".7"/><line x1="140.0" y1="20" x2="140.0" y2="28" stroke="#141414" stroke-width=".7"/><line x1="173.33333333333334" y1="24" x2="173.33333333333334" y2="28" stroke="#141414" stroke-width=".7"/><line x1="206.66666666666666" y1="24" x2="206.66666666666666" y2="28" stroke="#141414" stroke-width=".7"/><line x1="240.0" y1="20" x2="240.0" y2="28" stroke="#141414" stroke-width=".7"/><line x1="273.33333333333337" y1="24" x2="273.33333333333337" y2="28" stroke="#141414" stroke-width=".7"/><line x1="306.6666666666667" y1="24" x2="306.6666666666667" y2="28" stroke="#141414" stroke-width=".7"/><line x1="340.0" y1="20" x2="340.0" y2="28" stroke="#141414" stroke-width=".7"/><text x="40.0" y="42" text-anchor="middle">21:00</text><text x="140.0" y="42" text-anchor="middle">21:15</text><text x="240.0" y="42" text-anchor="middle">21:30</text><text x="340.0" y="42" text-anchor="middle">21:45</text><circle cx="120.0" cy="12" r="8.5" fill="#fbfaf7" stroke="#141414"/><text x="120.0" y="15.5" text-anchor="middle" fill="#141414">1</text><circle cx="206.66666666666666" cy="12" r="8.5" fill="#fbfaf7" stroke="#141414"/><text x="206.66666666666666" y="15.5" text-anchor="middle" fill="#141414">2</text><circle cx="246.66666666666666" cy="12" r="8.5" fill="#fbfaf7" stroke="#141414"/><text x="246.66666666666666" y="15.5" text-anchor="middle" fill="#141414">3</text><circle cx="266.66666666666663" cy="12" r="8.5" fill="#fbfaf7" stroke="#141414"/><text x="266.66666666666663" y="15.5" text-anchor="middle" fill="#141414">4</text><circle cx="293.33333333333337" cy="12" r="8.5" fill="#fbfaf7" stroke="#8d8781" stroke-dasharray="2 1.5"/><text x="293.33333333333337" y="15.5" text-anchor="middle" fill="#8d8781">5</text><line x1="285.33333333333337" y1="20" x2="301.33333333333337" y2="4" stroke="#e4432f" stroke-width="1.4"/><line x1="240.0" y1="20" x2="240.0" y2="30" stroke="#e4432f" stroke-dasharray="2 2"/><line x1="240.0" y1="24" x2="266.66666666666663" y2="24" stroke="#e4432f" stroke-width="2.2"/><rect x="302.6666666666667" y="20" width="8" height="8" fill="#e4432f"/><text x="314.6666666666667" y="15" fill="#e4432f">sealed</text>
+  </g></svg>
+  <div class="fi"><span class="no">1</span><div><div class="src">21:12 · guard log</div><p>Otto signed in at the loading bay.</p></div></div><div class="fi"><span class="no">2</span><div><div class="src">21:25 · kitchen ticket</div><p>Nadia sent the last order.</p></div></div><div class="fi"><span class="no">3</span><div><div class="src">21:31 · camera 3</div><p>Pavel crossed the rooftop.</p></div></div><div class="fi"><span class="no">4</span><div><div class="src">21:34 · witness</div><p>Iris was shelving in the archive.</p></div></div><div class="fi false"><span class="no">5</span><div><div class="src">21:38 · badge reader</div><p>Iris badged out at 21:30.</p></div><span class=tag>false</span></div>
+  <div class="who"><span class="lb">culprit</span><span class="nm sel">iris</span><span class="nm">otto</span><span class="nm">nadia</span><span class="nm">pavel</span></div>
+  <div class="acc">
+    <dl><div><dt>culprit</dt><dd>Iris</dd></div><div><dt>room</dt><dd>archive</dd></div></dl>
+    <button class="btn">close the case →</button>
+  </div>
+  <p class="crowd">2,481 detectives on this case today</p>
+</div>
+        <div class="m-foot"><span>▲ 1.2k ▼</span><span>318</span><span>Share</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="states">
+    <div class="fr-l">États des composants</div>
+
+<div class="st-row g" style="display:flex;gap:32px;align-items:flex-start;flex-wrap:wrap">
+  <div class="st" style="width:300px"><div class="fi" style="padding:9px 0"><span class="no">3</span><div><div class="src">21:31 · camera 3</div><p>Pavel crossed the rooftop.</p></div></div><i>Rapport · repos</i></div>
+  <div class="st" style="width:300px"><div class="fi" style="padding:9px 6px;background:#f5d5cf"><span class="no">3</span><div><div class="src">21:31 · camera 3</div><p>Pavel crossed the rooftop.</p></div></div><i>Rapport · pressé (tap = barrer)</i></div>
+  <div class="st" style="width:300px"><div class="fi false" style="padding:9px 0"><span class="no">5</span><div><div class="src">21:38 · badge reader</div><p>Iris badged out at 21:30.</p></div><span class="tag">false</span></div><i>Rapport · barré (le trait se dessine en 180 ms)</i></div>
+  <div class="st"><svg width="120" height="64" viewBox="0 0 120 64"><rect x="4" y="4" width="52" height="56" fill="none" stroke="#e4432f" stroke-width="1.1"/><rect x="64" y="4" width="52" height="56" fill="#f5d5cf" stroke="#e4432f" stroke-width="2.6"/></svg><i>Pièce · libre / choisie</i></div>
+  <div class="st"><button class="btn off">close the case →</button><i>Accuser · incomplet</i></div>
+  <div class="st"><button class="btn">close the case →</button><i>Accuser · prêt</i></div>
+  <div class="st"><span class="lb" style="font-size:12px;padding:14px 0;display:block">opening the case file —</span><i>Chargement (le plan se trace)</i></div>
+</div>
+  </div>
+</div>
+<script>
+(function(){
+  function fit(){var sh=document.getElementById('sheet');var z=Math.min(1,window.innerWidth/sh.offsetWidth);sh.style.transform='scale('+z+')';document.body.style.height=(sh.offsetHeight*z)+'px';}
+  fit(); window.addEventListener('resize',fit);
+})();
+</script>
+</body>
+</html>
