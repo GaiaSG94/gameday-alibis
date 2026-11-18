@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alibis · V2 · 03 Carte de fin</title>
+<style>
+/* ============ SHEET (planche) ============ */
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#cfccc5}
+body{font-family:"Helvetica Neue",Arial,"Liberation Sans",sans-serif;color:#1c1a17;overflow-x:hidden}
+.sheet{width:1980px;padding:40px 48px 56px;transform-origin:0 0}
+.sh-head{display:grid;grid-template-columns:420px 1fr 420px;gap:40px;align-items:start;margin-bottom:32px}
+.sh-id .k{font:600 11px/1 "DejaVu Sans Mono",Menlo,monospace;letter-spacing:.14em;text-transform:uppercase;color:#6d675c}
+.sh-id h1{font:400 44px/1.05 "Iowan Old Style",Charter,Georgia,"Noto Serif","DejaVu Serif",serif;margin-top:10px}
+.sh-why{font-size:15px;line-height:1.5;max-width:720px;color:#2e2a24}
+.sh-why b{font-weight:600}
+.sh-spec{display:flex;flex-direction:column;gap:10px}
+.sw{display:flex;gap:8px}
+.sw span{flex:1;height:44px;border-radius:4px;padding:6px;font:10px/1 "DejaVu Sans Mono",monospace;display:flex;align-items:flex-end;border:1px solid rgba(0,0,0,.08)}
+.ty{font-size:12px;color:#4a453d;line-height:1.5}
+.frames{display:flex;gap:48px;align-items:flex-start}
+.fr-l{font:600 11px/1 "DejaVu Sans Mono",monospace;letter-spacing:.12em;text-transform:uppercase;color:#6d675c;margin-bottom:10px}
+.states{margin-top:40px}
+.st-row{display:flex;gap:28px;align-items:flex-start;flex-wrap:wrap}
+.st{display:flex;flex-direction:column;gap:8px}
+.st i{font:normal 11px/1.3 "DejaVu Sans Mono",monospace;color:#6d675c}
+
+/* ============ NEUTRAL HOST CHROME (generic feed, not branded) ============ */
+.desk{width:1440px;height:900px;background:#f6f7f8;border-radius:10px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(0,0,0,.35);font-family:"Helvetica Neue",Arial,"Liberation Sans",sans-serif}
+.d-top{height:56px;background:#fff;border-bottom:1px solid #e4e6e8;display:flex;align-items:center;gap:24px;padding:0 24px}
+.d-logo{width:96px;height:22px;border-radius:6px;background:#dfe2e5}
+.d-search{flex:0 0 560px;margin:0 auto;height:38px;border-radius:19px;background:#eef0f2;color:#8a9096;font-size:14px;display:flex;align-items:center;padding:0 18px}
+.d-user{width:34px;height:34px;border-radius:50%;background:#dfe2e5}
+.d-body{display:grid;grid-template-columns:260px 768px 330px;gap:28px;padding:20px 24px 0;justify-content:center}
+.d-nav{display:flex;flex-direction:column;gap:14px;padding-top:8px}
+.d-nav span{height:12px;border-radius:6px;background:#e3e6e9}
+.d-nav span:nth-child(3n){width:70%}.d-nav span:nth-child(4n){width:55%}
+.post{background:#fff;border:1px solid #e4e6e8;border-radius:12px;padding:12px 16px 6px}
+.post-h{display:flex;align-items:center;gap:8px;font-size:12px;color:#6b7176;height:28px}
+.post-h .av{width:24px;height:24px;border-radius:50%;background:#1c1a17;color:#f2ead8;font:700 11px/24px Georgia,serif;text-align:center}
+.post-h b{color:#1f2326;font-weight:600}
+.post-t{font-size:19px;font-weight:600;color:#1f2326;margin:4px 0 10px;letter-spacing:-.01em}
+.post-f{display:flex;gap:10px;height:42px;align-items:center;font-size:12px;font-weight:600;color:#53595e}
+.post-f span{background:#eef0f2;border-radius:16px;padding:7px 12px}
+.d-side .card{background:#fff;border:1px solid #e4e6e8;border-radius:12px;padding:16px;font-size:13px;color:#3b4146;line-height:1.5}
+.d-side .card h4{font-size:14px;color:#1f2326;margin-bottom:6px}
+.d-side .card+.card{margin-top:16px}
+.d-side .cm{border-top:1px solid #eef0f2;padding:10px 0;font-size:13px}
+.d-side .cm b{font-size:12px;color:#6b7176;font-weight:600;display:block;margin-bottom:2px}
+.mob{width:390px;height:844px;background:#fff;border-radius:44px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(0,0,0,.4);outline:10px solid #111;outline-offset:0;font-family:"Helvetica Neue",Arial,"Liberation Sans",sans-serif;display:flex;flex-direction:column}
+.m-status{height:44px;display:flex;justify-content:space-between;align-items:center;padding:0 28px;font-size:14px;font-weight:600;color:#111}
+.m-bar{height:44px;display:flex;align-items:center;gap:12px;padding:0 14px;border-bottom:1px solid #eceef0;font-size:14px;font-weight:600;color:#1f2326}
+.m-bar .bk{font-size:20px;color:#6b7176}
+.m-post{padding:8px 14px 8px}
+.m-post .post-t{font-size:16px;margin:2px 0 0}
+.m-foot{height:48px;display:flex;gap:8px;align-items:center;padding:0 14px;border-top:1px solid #eceef0;font-size:12px;font-weight:600;color:#53595e;margin-top:auto}
+.m-foot span{background:#eef0f2;border-radius:16px;padding:7px 11px}
+
+
+.post-h .av{background:#e4432f;color:#fff;font-family:Arial,sans-serif}
+
+.sheet{width:1536px}
+.sh-head{grid-template-columns:330px 1fr 330px}
+.g{--bg:#fbf7f0;--ink:#141414;--red:#e4432f;--mut:#8d8781;--faint:#fbe0d9;
+  --sans:"Helvetica Neue",Arial,"Liberation Sans",sans-serif;--mono:"IBM Plex Mono","SF Mono",Menlo,"DejaVu Sans Mono",monospace;
+  position:relative;background:var(--bg);color:var(--ink);font-family:var(--sans);overflow:hidden}
+.g .lb{font:700 11px/1 var(--mono);color:var(--red);letter-spacing:.06em;text-transform:uppercase}
+.g h2{font-weight:800;letter-spacing:-.03em;line-height:1}
+.g .hd{display:flex;justify-content:space-between;align-items:center;border-bottom:4px solid var(--red);border-radius:0}
+.g .meta{display:flex;gap:8px}
+.g .chip{font:700 13px/1 var(--mono);border:3px solid var(--ink);border-radius:999px;padding:7px 12px;background:#fff}
+.g .chip.r{background:var(--red);color:#fff}
+.g .rule{color:var(--ink);font-weight:500}
+.g .rule em{font-style:normal;color:var(--red);font-weight:800}
+.g .plan,.g .time{display:block;width:100%}
+.g .fi{display:grid;grid-template-columns:26px 1fr auto;gap:12px;align-items:center;border-top:3px solid var(--red)}
+.g .fi:first-of-type{border-top-width:3px}
+.g .fi .no{width:24px;height:24px;border-radius:50%;background:var(--red);color:#fff;font:800 12px/24px var(--mono);text-align:center}
+.g .fi .src{font:700 10.5px/1 var(--mono);color:var(--mut);margin-bottom:5px;text-transform:uppercase;letter-spacing:.04em}
+.g .fi p{line-height:1.25;font-weight:600}
+.g .fi.false .no{background:#b9b3ab}
+.g .fi.false p{color:var(--mut);text-decoration:line-through;text-decoration-color:var(--red);text-decoration-thickness:3px}
+.g .fi .tag{margin-right:4px;font:800 11px/1 var(--mono);color:#fff;background:var(--red);border:3px solid var(--ink);border-radius:6px;padding:4px 7px;transform:rotate(-4deg)}
+.g .who{display:flex;gap:8px;align-items:center;border-top:3px solid var(--red)}
+.g .who .lb{margin-right:4px}
+.g .nm{border:3px solid var(--ink);border-radius:999px;padding:5px 11px;font-weight:800;background:#fff}
+.g .nm.sel{background:var(--red);color:#fff;box-shadow:0 3px 0 var(--ink)}
+.g .acc{display:flex;align-items:center;justify-content:space-between;border-top:4px solid var(--ink)}
+.g .acc dl{display:flex;gap:28px}
+.g .acc dt{font:700 10.5px/1 var(--mono);color:var(--mut);margin-bottom:5px;text-transform:uppercase;letter-spacing:.06em}
+.g .acc dd{font-weight:800}
+.g .btn{font:800 16px/1 var(--sans);background:var(--red);color:#fff;border:3px solid var(--ink);border-radius:12px;padding:15px 22px;box-shadow:4px 4px 0 var(--ink)}
+.g .btn.off{background:#eee9e1;color:#a8a29a;border-color:#cfc8be;box-shadow:none}
+.g .btn.down{transform:translate(4px,4px);box-shadow:0 0 0 var(--ink)}
+.g .crowd{font:700 11px/1.4 var(--mono);color:var(--mut)}
+.gd{width:734px;height:648px;border:3px solid var(--ink);border-radius:16px;padding:20px 24px 0}
+.gd h2{font-size:34px;padding-bottom:12px}
+.gd .rule{font-size:15.5px;margin:12px 0 14px}
+.gd .grid{display:grid;grid-template-columns:310px minmax(0,1fr);gap:22px}
+.gd .fi{padding:10px 0 11px}
+.gd .fi p{font-size:14.5px}
+.gd .who{margin-top:4px;padding-top:14px;font-size:14px;gap:6px}
+.gd .acc{margin-top:18px;padding-top:14px}
+.gd .acc dd{font-size:17px}
+.st-row.g{background:transparent;overflow:visible}
+
+.gf{width:734px;height:648px;border:3px solid var(--ink);border-radius:16px;padding:20px 24px 0;display:flex;flex-direction:column}
+.gf .top{display:flex;justify-content:space-between;align-items:center}
+.g .stamp{display:inline-block;font:800 50px/1 var(--sans);color:var(--red);border:6px solid var(--red);border-radius:10px;padding:8px 16px 6px;transform:rotate(-4deg);letter-spacing:.01em;background:#fff;box-shadow:5px 5px 0 var(--ink)}
+.g .stamp.cold{color:#8d8781;border-color:#8d8781;box-shadow:5px 5px 0 #b9b3ab}
+.gf .hero{display:flex;align-items:center;gap:26px;margin:16px 0 14px}
+.gf .verdict{font-size:18px;font-weight:600;line-height:1.35}
+.gf .verdict b{font-weight:800}
+.gf .verdict em{font-style:normal;color:var(--red);font-weight:800}
+.gf .cols{display:grid;grid-template-columns:300px minmax(0,1fr);gap:22px;border-top:3px solid var(--red);padding-top:12px}
+.gf .truth{font-size:14.5px;font-weight:600;line-height:1.4;margin-top:10px}
+.gf .truth b{color:var(--red)}
+.g .tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:8px 0 20px}
+.g .tile{border:3px solid var(--ink);border-radius:12px;background:#fff;padding:14px 11px;box-shadow:0 3px 0 var(--ink)}
+.g .tile b{display:block;font:800 22px/1 var(--sans);letter-spacing:-.02em;white-space:nowrap}
+.g .tile span{font:700 10px/1.3 var(--mono);color:var(--mut);text-transform:uppercase;letter-spacing:.04em}
+.g .tile.r{background:var(--red);color:#fff}.g .tile.r span{color:#fff;opacity:.8}
+.g .bar{display:grid;grid-template-columns:52px 1fr 40px;gap:10px;align-items:center;margin-top:12px;font-weight:800;font-size:15px}
+.g .bt{height:22px;border:3px solid var(--ink);border-radius:999px;background:#fff;overflow:hidden}
+.g .bt i{display:block;height:100%;background:#d6d0c7}
+.g .bar.me .bt i{background:var(--red)}
+.g .bp{font:700 12px/1 var(--mono);text-align:right}
+.gf .end{margin-top:auto;border-top:4px solid var(--ink);padding:14px 0 16px;display:flex;align-items:center;gap:12px}
+.g .btn2{font:800 16px/1 var(--sans);background:#fff;color:var(--ink);border:3px solid var(--ink);border-radius:12px;padding:15px 18px;box-shadow:4px 4px 0 var(--ink)}
+.gf .share{font:700 11px/1.4 var(--mono);color:var(--mut);margin-left:auto;text-align:right}
+.gf .share b{color:var(--ink)}
+.g .toast{display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:#fff;font:700 14px/1 var(--sans);padding:12px 16px;border-radius:12px;box-shadow:4px 4px 0 var(--red)}
+
+</style>
+</head>
+<body>
+<div class="sheet" id="sheet">
+
+  <div class="sh-head">
+    <div class="sh-id">
+      <div class="k">Alibis · Planches V2 · Déclinaison · Page « Carte de fin » · 2026-11-18</div>
+      <h1>03 — Carte de fin</h1>
+    </div>
+    <p class="sh-why"><b>Pourquoi.</b> La fin de partie récompense d'abord (un gros tampon CASE CLOSED qui tombe), puis montre la vérité sur le même plan, pour qu'on comprenne pourquoi on avait raison ou tort. La partie communauté répond à la seule question qu'on se pose après avoir joué : « et les autres ? » (qui ils ont accusé, mon rang). L'action principale envoie vers les commentaires, avec un résultat à copier sans spoiler : c'est là que la boucle Reddit se referme.</p>
+    <div class="sh-spec">
+      <div class="sw"><span style="background:#fbf7f0;color:#141414">#fbf7f0</span><span style="background:#fbe0d9;color:#141414">#fbe0d9</span><span style="background:#8d8781;color:#fff">#8d8781</span><span style="background:#141414;color:#fbf7f0">#141414</span><span style="background:#e4432f;color:#fff">#e4432f</span></div>
+      <div class="ty"><span style="font-size:15px;font-weight:800">Grotesque grasse</span> — titres, pions, boutons · <span style="font-family:'DejaVu Sans Mono',monospace;font-weight:700">mono gras</span> — heures, n° de rapport</div>
+    </div>
+  </div>
+
+  <div class="frames">
+    <div>
+      <div class="fr-l">Desktop · 1440 × 900 · post déplié dans le feed</div>
+      <div class="desk">
+        <div class="d-top"><div class="d-logo"></div><div class="d-search">Search</div><div class="d-user"></div></div>
+        <div class="d-body">
+          <aside class="d-nav"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></aside>
+          <main>
+            <article class="post">
+              <div class="post-h"><div class="av">A</div><b>r/AlibisDaily</b> · 3 h · u/case-desk</div>
+              <div class="post-t">Case Nº 042 — Who locked the archive?</div>
+
+<div class="g gf">
+  <div class="top"><span class="lb">Case 042 · Tue 18 Nov</span><div class="meta"><span class="chip">⏱ 01:47</span><span class="chip r">🔥 7 · +1</span></div></div>
+  <div class="hero"><span class="stamp">CASE CLOSED</span><p class="verdict">You named <b>Iris Vane</b><br>in the <b>archive</b>. <em>Correct.</em></p></div>
+  <div class="cols">
+    <div>
+      <div class="lb">The truth</div>
+      <svg class="plan" viewBox="-4 -4 368 236" style="height:236px" preserveAspectRatio="xMidYMid meet" aria-label="Ground floor plan">
+  <defs><pattern id="hatch-e" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="10" stroke="#e4432f" stroke-width="3" opacity=".22"/></pattern></defs>
+  <rect x="44" y="8" width="144" height="98" rx="10" fill="#fbe0d9"/>
+  <rect x="44" y="8" width="144" height="98" rx="10" fill="url(#hatch-e)" stroke="#e4432f" stroke-width="5.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <rect x="194" y="8" width="144" height="98" rx="10" fill="#fff" stroke="#e4432f" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <rect x="44" y="112" width="144" height="98" rx="10" fill="#fff" stroke="#e4432f" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <rect x="194" y="112" width="144" height="98" rx="10" fill="#fff" stroke="#e4432f" stroke-width="4" stroke-dasharray="10 7" stroke-linejoin="round" stroke-linecap="round"/>
+  <rect x="38" y="158" width="12" height="26" fill="#fbf7f0"/>
+  <path d="M8 171 H34" stroke="#e4432f" stroke-width="4" stroke-linecap="round"/><path d="M24 163 L34 171 L24 179" fill="none" stroke="#e4432f" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <g font-family="Helvetica Neue,Arial,Liberation Sans,sans-serif" font-size="14" font-weight="800" fill="#141414">
+    <text x="56" y="30">Archive</text>
+    <rect x="56" y="38" width="96" height="18" rx="9" fill="#e4432f"/><text x="104" y="51" fill="#fff" font-size="10" text-anchor="middle" letter-spacing=".6">LOCKED 21:40</text>
+    <text x="206" y="30">Kitchen</text>
+    <text x="56" y="134">Loading bay</text>
+    <text x="206" y="134">Rooftop</text>
+  </g>
+  <g font-family="Helvetica Neue,Arial,sans-serif" font-size="12" text-anchor="middle" font-weight="800">
+    <circle cx="122" cy="82.5" r="19" fill="#141414"/><circle cx="122" cy="80" r="19" fill="#e4432f" stroke="#141414" stroke-width="3"/><text x="122" y="84.5" fill="#fff">IV</text><circle cx="139" cy="64" r="8" fill="#e4432f" stroke="#fbf7f0" stroke-width="2.5"/><text x="139" y="67.5" fill="#fff" font-size="10">4</text>
+    <circle cx="104" cy="180.5" r="19" fill="#141414"/><circle cx="104" cy="178" r="19" fill="#fff" stroke="#141414" stroke-width="3"/><text x="104" y="182.5" fill="#141414">OB</text><circle cx="121" cy="162" r="8" fill="#e4432f" stroke="#fbf7f0" stroke-width="2.5"/><text x="121" y="165.5" fill="#fff" font-size="10">1</text>
+    <circle cx="266" cy="72.5" r="19" fill="#141414"/><circle cx="266" cy="70" r="19" fill="#fff" stroke="#141414" stroke-width="3"/><text x="266" y="74.5" fill="#141414">NK</text><circle cx="283" cy="54" r="8" fill="#e4432f" stroke="#fbf7f0" stroke-width="2.5"/><text x="283" y="57.5" fill="#fff" font-size="10">2</text>
+    <circle cx="266" cy="178.5" r="19" fill="#141414"/><circle cx="266" cy="176" r="19" fill="#fff" stroke="#141414" stroke-width="3"/><text x="266" y="180.5" fill="#141414">PS</text><circle cx="283" cy="160" r="8" fill="#e4432f" stroke="#fbf7f0" stroke-width="2.5"/><text x="283" y="163.5" fill="#fff" font-size="10">3</text>
+    <circle cx="16" cy="136" r="15" fill="none" stroke="#b9b3ab" stroke-width="3" stroke-dasharray="4 4"/><text x="16" y="140.5" fill="#b9b3ab">IV</text>
+    <path d="M5 125 L27 147 M27 125 L5 147" stroke="#e4432f" stroke-width="4.5" stroke-linecap="round"/>
+  </g>
+</svg>
+      <p class="truth">The <b>badge reader lied</b>: Iris never left. She was seen shelving at 21:34 and the archive was sealed at 21:40.</p>
+    </div>
+    <div>
+      <div class="lb">You vs. the community</div>
+      <div class="tiles"><div class="tile r"><b>01:47</b><span>Your time</span></div><div class="tile"><b>#312</b><span>of 2,481</span></div><div class="tile"><b>Top 18%</b><span>Median 02:31</span></div></div>
+      <div class="lb">Who did detectives accuse?</div>
+      <div class="bar me"><span class="bn">Iris</span><span class="bt"><i style="width:61%"></i></span><span class="bp">61%</span></div><div class="bar"><span class="bn">Pavel</span><span class="bt"><i style="width:15%"></i></span><span class="bp">15%</span></div><div class="bar"><span class="bn">Otto</span><span class="bt"><i style="width:14%"></i></span><span class="bp">14%</span></div><div class="bar"><span class="bn">Nadia</span><span class="bt"><i style="width:10%"></i></span><span class="bp">10%</span></div>
+    </div>
+  </div>
+  <div class="end">
+    <button class="btn">Comment your theory →</button>
+    <button class="btn2">Copy result</button>
+    <span class="share">Alibis #042 · closed in <b>01:47</b> · 🔥7<br>Next file in <b>09:12:44</b> · <u>Leaderboard →</u></span>
+  </div>
+</div>
+              <div class="post-f"><span>▲ 1.2k ▼</span><span>318 comments</span><span>Share</span></div>
+            </article>
+          </main>
+          <aside class="d-side">
+            <div class="card"><h4>AlibisDaily</h4>One small case every day. Same file for everyone, new file at midnight UTC.</div>
+            <div class="card"><h4>From the comments</h4>
+              <div class="cm"><b>u/marlowe_kid · solved 01:12</b>The badge time gave it away. Nobody badges out before they're seen inside.</div>
+              <div class="cm"><b>u/teapot_tactics · 9-day streak</b>Fell for the camera again. Tomorrow.</div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="states">
+    <div class="fr-l">États des composants</div>
+
+<div class="g" style="background:transparent;overflow:visible;display:flex;gap:34px;flex-wrap:wrap;align-items:flex-start">
+  <div class="st"><div style="display:flex;align-items:center;gap:20px"><span class="stamp cold">CASE GONE COLD</span><p style="font-size:16px;font-weight:600;line-height:1.35">It was <b>Iris</b> in the <b>archive</b>.<br><span style="color:#8d8781">Streak back to 🔥 0.</span></p></div><i>Perdu (une seule accusation par jour, hypothèse)</i></div>
+  <div class="st"><span class="toast">✓ Result copied, no spoilers</span><i>Toast après « Copy result »</i></div>
+  <div class="st"><div class="tiles" style="width:330px;margin:0"><div class="tile r"><b>🔥 7</b><span>New best? no</span></div><div class="tile"><b>12</b><span>Best streak</span></div><div class="tile"><b>15/18</b><span>Cases solved</span></div></div><i>Variante tuiles · série</i></div>
+  <div class="st"><button class="btn down">Comment your theory →</button><i>Bouton · enfoncé</i></div>
+</div>
+  </div>
+</div>
+<script>
+(function(){
+  function fit(){var sh=document.getElementById('sheet');var z=Math.min(1,window.innerWidth/sh.offsetWidth);sh.style.transform='scale('+z+')';document.body.style.height=(sh.offsetHeight*z)+'px';}
+  fit(); window.addEventListener('resize',fit);
+})();
+</script>
+</body>
+</html>

@@ -26,7 +26,7 @@ Tu travailles pour Gaia. Tu n'inventes pas de fonctionnalité : si un écran dem
 ## 3. Ce que le jury note
 
 Stage 2 = 4 critères équipondérés :
-- **Delightful UX** : identité visuelle propre, lisible en 5 secondes, **UI dans le viewport, mobile first**.
+- **Delightful UX** : identité visuelle propre, lisible en 5 secondes, **UI dans le viewport** (règlement officiel : « exciting layouts and themes », pas d'exigence mobile).
 - **Polish** : sensation de produit lancé, feedback soigné, zéro composant non stylé.
 - **Reddit-y** : streaks, scores communautaires, accroches à commentaires — sans theming Reddit « on the nose » (pas de Snoo, pas de karma).
 - **Daily Content** : boucle quotidienne, contenu frais par seed.
@@ -50,7 +50,7 @@ Cette direction est un point de départ argumenté, pas un dogme : au premier to
 
 ## 6. Périmètre
 
-Planches rendues en **1440 × 900**, mais le critère Reddit impose « UI dans le viewport, mobile first » : chaque planche doit donc montrer **les deux cadres côte à côte** — 1440 × 900 (desktop) et 390 × 844 (mobile, le vrai contexte d'un post Reddit). C'est le seul cas où le mobile entre dans le périmètre, et il y est obligatoire.
+Planches rendues en **1440 × 900, desktop uniquement** (décision Gaia du 2026-11-18). Le règlement officiel (Devpost, « Judging Criteria ») n'exige pas le mobile ; le « mobile first » venait de l'idéation. Pas de cadre téléphone sauf demande explicite.
 
 ## 7. Process imposé (ne saute aucune étape)
 
